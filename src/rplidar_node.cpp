@@ -65,6 +65,8 @@
 
 #include <lifecycle_msgs/msg/state.hpp>
 
+#include "rclcpp_components/register_node_macro.hpp"
+
 using namespace std::chrono_literals;
 
 // ============================================================================
@@ -771,18 +773,7 @@ rcl_interfaces::msg::SetParametersResult RPlidarNode::parameters_callback(
 }
 
 // ============================================================================
-// main()
+// registration with rclcpp_components
 // ============================================================================
 
-int main(int argc, char **argv) {
-  rclcpp::init(argc, argv);
-
-  auto node = std::make_shared<RPlidarNode>();
-
-  rclcpp::executors::MultiThreadedExecutor executor;
-  executor.add_node(node->get_node_base_interface());
-  executor.spin();
-
-  rclcpp::shutdown();
-  return 0;
-}
+RCLCPP_COMPONENTS_REGISTER_NODE(RPlidarNode)
