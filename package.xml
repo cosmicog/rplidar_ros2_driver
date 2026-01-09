@@ -9,7 +9,7 @@
     Features multithreaded scanning, non-blocking I/O, and C++17 architecture.
   </description>
 
-  <maintainer email="frozenreboot@gmail.com">icemango</maintainer>
+  <maintainer email="frozenreboot@gmail.com">frozenreboot</maintainer>
 
   <license>BSD-2-Clause</license>
 

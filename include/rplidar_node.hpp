@@ -1,7 +1,7 @@
 /*
  * RPLIDAR ROS2 DRIVER
  *
- * Copyright (c) 2025, frozenreboot
+ * Copyright (c) 2025 - 2026 frozenreboot
  * Copyright (c) 2009 - 2014 RoboPeak Team
  * Copyright (c) 2014 - 2022 Shanghai Slamtec Co., Ltd.
  *

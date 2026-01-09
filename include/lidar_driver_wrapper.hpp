@@ -1,7 +1,7 @@
 /*
  * RPLIDAR ROS2 DRIVER
  *
- * Copyright (c) 2025, frozenreboot
+ * Copyright (c) 2025 - 2026 frozenreboot
  * Copyright (c) 2009 - 2014 RoboPeak Team
  * Copyright (c) 2014 - 2022 Shanghai Slamtec Co., Ltd.
  *
@@ -75,8 +75,8 @@
  * required
  */
 enum class ProtocolType {
-  OLD_TYPE,  ///< A-series (geometric compensation required)
-  NEW_TYPE   ///< S/C-series (geometric compensation usually not required)
+  OLD_TYPE, ///< A-series (geometric compensation required)
+  NEW_TYPE  ///< S/C-series (geometric compensation usually not required)
 };
 
 /**
@@ -137,7 +137,7 @@ struct DriverProfile {
  * implementation or on the vendor SDK types directly.
  */
 class LidarDriverInterface {
- public:
+public:
   virtual ~LidarDriverInterface() = default;
 
   /**
@@ -155,7 +155,7 @@ class LidarDriverInterface {
    *
    * @return true on success, false if the connection or initialization fails.
    */
-  virtual bool connect(const std::string& port, sl_u32 baudrate,
+  virtual bool connect(const std::string &port, sl_u32 baudrate,
                        bool use_geometric_compensation = true) = 0;
 
   /**
@@ -227,7 +227,7 @@ class LidarDriverInterface {
    * @return true on success, false if scan acquisition fails.
    */
   virtual bool grab_scan_data(
-      std::vector<sl_lidar_response_measurement_node_hq_t>& nodes) = 0;
+      std::vector<sl_lidar_response_measurement_node_hq_t> &nodes) = 0;
 
   /**
    * @brief Detect device model/protocol and initialize driver strategy.
@@ -284,7 +284,7 @@ class LidarDriverInterface {
  *  - Handling scan acquisition and basic error reporting
  */
 class RealLidarDriver : public LidarDriverInterface {
- public:
+public:
   /**
    * @brief Construct a RealLidarDriver with no active connection.
    *
@@ -298,7 +298,7 @@ class RealLidarDriver : public LidarDriverInterface {
   ~RealLidarDriver() override;
 
   /// @copydoc LidarDriverInterface::connect()
-  bool connect(const std::string& port, sl_u32 baudrate,
+  bool connect(const std::string &port, sl_u32 baudrate,
                bool use_geometric_compensation = true) override;
 
   /// @copydoc LidarDriverInterface::disconnect()
@@ -322,7 +322,7 @@ class RealLidarDriver : public LidarDriverInterface {
 
   /// @copydoc LidarDriverInterface::grab_scan_data()
   bool grab_scan_data(
-      std::vector<sl_lidar_response_measurement_node_hq_t>& nodes) override;
+      std::vector<sl_lidar_response_measurement_node_hq_t> &nodes) override;
 
   /// @copydoc LidarDriverInterface::detect_and_init_strategy()
   void detect_and_init_strategy() override;
@@ -354,10 +354,10 @@ class RealLidarDriver : public LidarDriverInterface {
    */
   std::string get_device_info_str() const;
 
- private:
+private:
   /// Raw pointer to the underlying Slamtec driver instance (owned by this
   /// class).
-  sl::ILidarDriver* drv_ = nullptr;
+  sl::ILidarDriver *drv_ = nullptr;
 
   /// Cached device information obtained from the SDK.
   sl_lidar_response_device_info_t devinfo_{};
@@ -384,7 +384,7 @@ class RealLidarDriver : public LidarDriverInterface {
  *  - Simplify integration tests and continuous integration setups
  */
 class DummyLidarDriver : public LidarDriverInterface {
- public:
+public:
   /// Construct a dummy driver in a disconnected state.
   DummyLidarDriver() = default;
 
@@ -392,7 +392,7 @@ class DummyLidarDriver : public LidarDriverInterface {
   ~DummyLidarDriver() override = default;
 
   /// @copydoc LidarDriverInterface::connect()
-  bool connect(const std::string& port, sl_u32 baudrate,
+  bool connect(const std::string &port, sl_u32 baudrate,
                bool use_geometric_compensation = true) override;
 
   /// @copydoc LidarDriverInterface::disconnect()
@@ -416,7 +416,7 @@ class DummyLidarDriver : public LidarDriverInterface {
 
   /// @copydoc LidarDriverInterface::grab_scan_data()
   bool grab_scan_data(
-      std::vector<sl_lidar_response_measurement_node_hq_t>& nodes) override;
+      std::vector<sl_lidar_response_measurement_node_hq_t> &nodes) override;
 
   /// @copydoc LidarDriverInterface::detect_and_init_strategy()
   void detect_and_init_strategy() override;
@@ -439,4 +439,4 @@ class DummyLidarDriver : public LidarDriverInterface {
   bool set_motor_speed(uint16_t /*rpm*/) override { return true; }
 };
 
-#endif  // LIDAR_DRIVER_WRAPPER_HPP
+#endif // LIDAR_DRIVER_WRAPPER_HPP
