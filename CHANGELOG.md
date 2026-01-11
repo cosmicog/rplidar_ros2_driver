@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated copyright years to 2026.
 
 ### Fixed
-- **Breaking:** Fixed scan data mirroring issue (inverted left/right). 
+- **Breaking:** Fixed scan data mirroring issue (inverted left/right).
   - *Note: Please check your robot's rotation direction after this update.*
 - Fixed an issue where `launch arguments` were overriding parameter file settings.
 
