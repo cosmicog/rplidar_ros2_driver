@@ -22,12 +22,12 @@ find_package(geometry_msgs REQUIRED)
 # =========================================================
 # 2. Build SDK (Static Library)
 # =========================================================
-file(GLOB SDK_SOURCES 
+file(GLOB SDK_SOURCES
     "src/sdk/src/*.cpp"
     "src/sdk/src/hal/*.cpp"
     "src/sdk/src/dataunpacker/*.cpp"
     "src/sdk/src/dataunpacker/unpacker/*.cpp"
-    "src/sdk/src/arch/linux/*.cpp" 
+    "src/sdk/src/arch/linux/*.cpp"
 )
 
 add_library(rplidar_sdk STATIC ${SDK_SOURCES})

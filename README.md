@@ -7,7 +7,7 @@
 
 > **"Because the official driver shouldn't crash just because you pulled the plug."**
 
-This is a heavily refactored, **fault-tolerant** ROS 2 driver for Slamtec RPLIDAR. 
+This is a heavily refactored, **fault-tolerant** ROS 2 driver for Slamtec RPLIDAR.
 Designed with a **Lifecycle State Machine** and **Thread-Safe Architecture**, ensuring your robot keeps running even under hardware disconnection or permission failures.
 
 ---
@@ -26,7 +26,7 @@ Designed with a **Lifecycle State Machine** and **Thread-Safe Architecture**, en
 
 ## 🧪 Call for Experiments: "Does it survive?"
 
-I need your help to validate this driver on various robots! 
+I need your help to validate this driver on various robots!
 If you use this driver, please **stress-test** it (e.g., unplug USB while scanning, change RPM dynamically) and share your results.
 
 ### 📢 How to Submit a Report
@@ -81,11 +81,11 @@ ros2 param set /rplidar_node scan_mode DenseBoost
 This driver uses a **3-Layer Design** to decouple ROS 2 logic from the vendor SDK.
 
 - **Node Layer:** Handles Lifecycle & Parameters.
-    
+
 - **Wrapper Layer:** Handles Threading & Mutex.
-    
+
 - **SDK Layer:** Raw data fetching.
-    
+
 
 ![Architecture Diagram](./doc/architecture.png)
 
@@ -94,9 +94,8 @@ This driver uses a **3-Layer Design** to decouple ROS 2 logic from the vendor SD
 ## 👤 Author & Maintainer
 
 - **frozenreboot** - _Initial Refactoring & Architecture Design_
-    
+
 - Blog: [Tech Log](https://frozenreboot.github.io/)
-    
+
 
 Based on the original work by RoboPeak & Slamtec.
-
