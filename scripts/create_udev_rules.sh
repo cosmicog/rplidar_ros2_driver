@@ -38,7 +38,7 @@ RULES_FILE="/etc/udev/rules.d/99-rplidar.rules"
 
 echo ""
 echo "Creating udev rule for device ID ${ID_VENDOR}:${ID_PRODUCT}"
-echo " → /dev/${SYMLINK_NAME}"
+echo " -> /dev/${SYMLINK_NAME}"
 echo ""
 
 # Write udev rule

@@ -84,5 +84,5 @@ rplidar_node:
     #   Recommended: 3 (~4-6s delay) for quicker disconnect detection.
     #   If this value is too small, temporary noise may be treated as a disconnect.
     #   The SDK checks device status every ~2 seconds,
-    #   so the actual detection time ≈ max_retries × 2s.
+    #   so the actual detection time = approx max_retries * 2s.
     max_retries: 3
