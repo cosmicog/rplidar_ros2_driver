@@ -86,3 +86,14 @@ rplidar_node:
     #   The SDK checks device status every ~2 seconds,
     #   so the actual detection time = approx max_retries * 2s.
     max_retries: 3
+
+    # =========================================================
+    # [4] Orientation Correction (Added for A1/Reversed Issue)
+    # =========================================================
+
+    # angle_offset:
+    #   Add a fixed angle (in degrees) to all scan data.
+    #   Use this to correct hardware zero-angle misalignment.
+    #   - Standard devices (S-Series): 0.0
+    #   - Legacy A1 (cable-side zero): 180.0
+    angle_offset: 0.0
