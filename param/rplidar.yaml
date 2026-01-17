@@ -95,5 +95,5 @@ rplidar_node:
     #   Add a fixed angle (in degrees) to all scan data.
     #   Use this to correct hardware zero-angle misalignment.
     #   - Standard devices (S-Series): 0.0
-    #   - Legacy A1 (cable-side zero): 180.0
+    #   - Legacy A1,A2 (cable-side zero): 180.0
     angle_offset: 0.0
