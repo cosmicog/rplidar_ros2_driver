@@ -89,6 +89,9 @@ RPlidarNode::RPlidarNode(const rclcpp::NodeOptions &options)
   this->declare_parameter<int>("rpm", 0);
   this->declare_parameter<float>("max_distance", 0.0f);
 
+  this->declare_parameter<float>("angle_offset", 0.0f); // Default 0.0
+  this->get_parameter("angle_offset", params_.angle_offset);
+
   RCLCPP_INFO(this->get_logger(),
               "[Lifecycle] Node created. Waiting for configuration.");
 }
@@ -584,8 +587,13 @@ void RPlidarNode::publish_scan(
     if (node.dist_mm_q2 == 0) {
       continue;
     }
-
     float angle_deg = node.angle_z_q14 * 90.0f / 16384.0f;
+    angle_deg += params_.angle_offset;
+    if (angle_deg >= 360.0f)
+      angle_deg -= 360.0f;
+    if (angle_deg < 0.0f)
+      angle_deg += 360.0f;
+
     float angle_rad = angle_deg * (M_PI / 180.0f);
     float dist_m = node.dist_mm_q2 / 4000.0f;
     float intensity = is_new_protocol ? static_cast<float>(node.quality)
